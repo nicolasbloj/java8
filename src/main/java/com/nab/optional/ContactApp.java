@@ -27,6 +27,22 @@ public class ContactApp {
         opContact.ifPresent(contact -> {
             System.out.printf("Contact: %s, Phone: %s", contact.getName(), contact.getPhoneNumber());
         });
+        // especificacion de un consumidor:
+        /*
+        ifPresent(Consumer<? super T> consumer)
+            If a value is present, invoke the specified consumer with the value, otherwise do nothing.
+             Parameters:
+                consumer - block to be executed if a value is present 
+            Throws:
+                NullPointerException - if value is present and consumer is null
+         */
+
+        PhoneDialer dialer = new PhoneDialer();
+        opContact.ifPresent(contact -> dialer.dial(contact));
+
+        // member reference
+        PhoneDialer dialer2 = new PhoneDialer();
+        opContact.ifPresent(dialer2::dial);
 
     }
 }
