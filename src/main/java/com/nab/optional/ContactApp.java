@@ -44,5 +44,18 @@ public class ContactApp {
         PhoneDialer dialer2 = new PhoneDialer();
         opContact.ifPresent(dialer2::dial);
 
+        // SI TIENE VALOR, RETORNA EL MISMO, SINO INVOCA A UN Supplier [ () -> ] 
+        // QUE GENERA UN VALOR POR DEFECTO:
+        Contact defaultContact = new Contact("Default", "Arg", "112");
+        String emergenyNumber = opContact.orElseGet(() -> defaultContact).getPhoneNumber();
+        // en java 9 tenemos un metodo mas legible: or()
+
+        System.out.printf("\nEmergency number %s ", emergenyNumber);
+
+        //JAVA 9 ************************************
+        /*opContact.ifPresentOrElse(
+                contact -> dialer.dial(contact), 
+                () -> dialer.dial("111") //RUNNABLE, se ejecuta si el valor no esta presente.
+        );*/
     }
 }
