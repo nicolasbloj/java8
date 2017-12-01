@@ -57,5 +57,10 @@ public class ContactApp {
                 contact -> dialer.dial(contact), 
                 () -> dialer.dial("111") //RUNNABLE, se ejecuta si el valor no esta presente.
         );*/
+        
+        
+        
+        
+        String s = new String("hola").intern(); // impacto en memoria. liberacion de memoria para cadenas iguales
     }
 }
